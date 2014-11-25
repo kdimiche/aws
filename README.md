@@ -29,7 +29,7 @@ The script will use the credentials for init\_$ENVIRONMENT and create a new prof
 `$ python get_sts_token.py -u kevin.dimichel-dev --mfa_token 123456 -e dev` 
 
 
-#### Example of AWS CLI usage #### 
+#### Example of AWS CLI usage ####
 `$ aws iam list-roles --profile dev`
 
 ## Links ##
