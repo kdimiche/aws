@@ -24,9 +24,9 @@ The script will use the credentials for init\_$ENVIRONMENT and create a new prof
 
 ### Usage ###
 #### Generate Session Credentials ####
-`$ python get_sts_token.py -u kevin.dimichel --mfa_token 761247 -e prd`
+`$ python get_sts_token.py -u kevin.dimichel --mfa_token 123456 -e prd`
 
-`$ python get_sts_token.py -u kevin.dimichel-dev --mfa_token 761247 -e dev` 
+`$ python get_sts_token.py -u kevin.dimichel-dev --mfa_token 123456 -e dev` 
 
 
 #### Example of AWS CLI usage #### 
