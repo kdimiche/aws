@@ -7,15 +7,19 @@ With MFA enabled accounts, you need to generate session tokens (via STS) to use 
 
 - Python 2.7.8
 - AWS CLI
-- AWS account already configured with MFA device
-- CLI configured with '~/.aws/config' containing header for each environment 
+- CLI configured with '~/.aws/config' containing header for each environment
+- config.py file that contains a dictionary AWS_ACCOUNTS where key is $ENVRIRONMENT and value is $AWS_ACCOUNT_ID
 
+Example config.py file
+> AWS_ACCOUNTS = {
+>    'dev': '123456789012',
+>    'prd': '123456789013'
+>}
+
+Example ~/.aws/config file
 > [profile init_$ENVIRONMENT]  
 > aws\_access\_key\_id = $AWS\_ACCESS\_KEY\_ID  
 > aws\_secret\_access\_key = $AWS\_SECRET\_ACCESS\_KEY  
-
-- config.py file that contains a dictionary AWS_ACCOUNTS where key is $ENVRIRONMENT and value is $AWS_ACCOUNT_ID
-
 
 ### Results ###
 
@@ -28,8 +32,7 @@ The script will use the credentials for init\_$ENVIRONMENT and create a new prof
 ### Usage ###
 #### Generate Session Credentials ####
 `$ python get_sts_token.py -u kevin.dimichel --mfa_token 123456 -e prd`
-
-`$ python get_sts_token.py -u kevin.dimichel-dev --mfa_token 123456 -e dev` 
+`$ python get_sts_token.py -u kevin.dimichel-dev --mfa_token 123456 -e dev`
 
 
 #### Example of AWS CLI usage ####

@@ -1,20 +1,11 @@
 import config
+import credentials
 
 import argparse
 import ConfigParser
 
 import boto
 from boto import sts
-import os
-
-
-def get_aws_cli_config_file_path(
-    aws_cli_config_file='config',
-    home_path=os.path.expanduser('~'),
-):
-
-    aws_cli_config_file_path = os.path.join(home_path, '.aws', aws_cli_config_file)
-    return aws_cli_config_file_path
 
 
 def main():
@@ -59,7 +50,7 @@ def main():
     profile_init = 'profile init_{}'.format(environment)
 
     # Get AWS CLI config path
-    aws_cli_config_file_path = get_aws_cli_config_file_path()
+    aws_cli_config_file_path = credentials.get_aws_cli_config_file_path()
 
     # get AWS credentials from init profiles
     configuration = ConfigParser.SafeConfigParser()
@@ -86,7 +77,6 @@ def main():
 
     # Write Session token to AWS CLI Config file
     # Check if profile already exists. If not, add section
-
     if not configuration.has_section(profile_name):
         configuration.add_section(profile_name)
 
